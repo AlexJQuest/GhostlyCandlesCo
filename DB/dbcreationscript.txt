@@ -1,0 +1,92 @@
+-- Create CardInfo table first, since it's referenced by Customers
+CREATE TABLE IF NOT EXISTS `CardInfo` (
+    `Card_ID` INT(11) NOT NULL AUTO_INCREMENT,
+    `Card_Name` VARCHAR(100) NOT NULL,
+    `Card_User` VARCHAR(100) NOT NULL,
+    `Card_CVC` VARCHAR(5) NOT NULL,
+    `Card_ExpDate` DATE NOT NULL, -- Combined Expiration Month and Year
+    `created_at` TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    `updated_at` TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+    PRIMARY KEY (`Card_ID`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- Create Category table
+CREATE TABLE IF NOT EXISTS `Category` (
+    `Category_ID` INT(11) NOT NULL AUTO_INCREMENT,
+    `Category_Name` VARCHAR(100) NOT NULL,
+    `Category_Description` TEXT,
+    `created_at` TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    `updated_at` TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+    PRIMARY KEY (`Category_ID`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- Create Products table
+CREATE TABLE IF NOT EXISTS `Products` (
+    `Item_ID` INT(11) NOT NULL AUTO_INCREMENT,
+    `Item_Name` VARCHAR(100) NOT NULL,
+    `Item_Description` TEXT,
+    `Item_Img` VARCHAR(255),
+    `Item_CategoryId` INT(11),
+    `Item_Price` DECIMAL(10, 2) NOT NULL,
+    `Item_Specs` TEXT,
+    `Item_Stock` INT(11) DEFAULT 0,
+    `created_at` TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    `updated_at` TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+    PRIMARY KEY (`Item_ID`),
+    FOREIGN KEY (`Item_CategoryId`) REFERENCES `Category`(`Category_ID`)
+        ON DELETE SET NULL ON UPDATE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- Create Customers table
+CREATE TABLE IF NOT EXISTS `Customers` (
+    `Customer_ID` INT(11) NOT NULL AUTO_INCREMENT,
+    `Customer_Name` VARCHAR(100) NOT NULL,
+    `Customer_Lastname` VARCHAR(100) NOT NULL,
+    `Customer_Email` VARCHAR(100) NOT NULL,
+    `Customer_ContactNo` VARCHAR(20),
+    `Customer_Address` TEXT,
+    `Customer_Password` VARCHAR(255) NOT NULL, -- For secure login
+    `Customer_CardID` INT(11),
+    `created_at` TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    `updated_at` TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+    PRIMARY KEY (`Customer_ID`),
+    FOREIGN KEY (`Customer_CardID`) REFERENCES `CardInfo`(`Card_ID`)
+        ON DELETE SET NULL ON UPDATE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- Create Shippers table
+CREATE TABLE IF NOT EXISTS `Shippers` (
+    `Shipper_ID` INT(11) NOT NULL AUTO_INCREMENT,
+    `Shipper_Name` VARCHAR(100) NOT NULL,
+    `Shipper_Address` TEXT,
+    `Shipper_ContactNo` VARCHAR(20),
+    `Shipper_Email` VARCHAR(100),
+    `created_at` TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    `updated_at` TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+    PRIMARY KEY (`Shipper_ID`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- Create Orders table
+CREATE TABLE IF NOT EXISTS `Orders` (
+    `Order_ID` INT(11) NOT NULL AUTO_INCREMENT,
+    `Order_ItemID` INT(11),
+    `Order_Imgs` VARCHAR(255),
+    `Order_Prices` DECIMAL(10, 2) NOT NULL,
+    `Order_Descr` TEXT,
+    `Order_TrackingNo` VARCHAR(50),
+    `Order_ShipperID` INT(11),
+    `Order_CustomerID` INT(11),
+    `Order_Status` VARCHAR(50),
+    `Order_Date` TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    `Delivery_Date` TIMESTAMP NULL,
+    `Order_PaymentStatus` VARCHAR(50) DEFAULT 'Pending',
+    `created_at` TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    `updated_at` TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+    PRIMARY KEY (`Order_ID`),
+    FOREIGN KEY (`Order_ItemID`) REFERENCES `Products`(`Item_ID`)
+        ON DELETE SET NULL ON UPDATE CASCADE,
+    FOREIGN KEY (`Order_ShipperID`) REFERENCES `Shippers`(`Shipper_ID`)
+        ON DELETE SET NULL ON UPDATE CASCADE,
+    FOREIGN KEY (`Order_CustomerID`) REFERENCES `Customers`(`Customer_ID`)
+        ON DELETE SET NULL ON UPDATE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;

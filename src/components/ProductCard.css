@@ -1,0 +1,55 @@
+.card {
+  border: 1px solid #ddd; /* Light gray border */
+  border-radius: 8px; /* Rounded corners */
+  overflow: hidden; /* Hide overflow */
+  transition: transform 0.2s; /* Smooth scaling effect */
+  margin: 20px; /* Space between cards */
+  background-color: #fff; /* White background */
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+}
+
+.card:hover {
+  transform: scale(1.05); /* Scale up on hover */
+}
+
+.cover {
+  position: relative; /* Positioning for child elements */
+}
+
+.product-image {
+  width: 100%; /* Full width */
+  height: auto; /* Maintain aspect ratio */
+  max-height: 200px; /* Limit height */
+  object-fit: cover; /* Cover the area */
+}
+
+.card-back {
+  padding: 10px; /* Inner padding */
+  text-align: center; /* Center text */
+}
+
+h1 {
+  font-size: 1.2em; /* Font size for product name */
+  margin: 10px 0; /* Margin above and below */
+  color: #333; /* Dark gray text */
+}
+
+.price {
+  font-size: 1.1em; /* Font size for price */
+  color: #007BFF; /* Blue color for price */
+  margin: 10px 0; /* Margin above and below */
+}
+
+button {
+  background-color: #28a745; /* Green background */
+  color: white; /* White text */
+  border: none; /* No border */
+  border-radius: 4px; /* Rounded corners */
+  padding: 10px 15px; /* Inner padding */
+  cursor: pointer; /* Pointer cursor */
+  transition: background-color 0.3s; /* Smooth color transition */
+}
+
+button:hover {
+  background-color: #218838; /* Darker green on hover */
+}
