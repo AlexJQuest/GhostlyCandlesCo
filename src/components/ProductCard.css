@@ -1,55 +1,160 @@
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@200;600&display=swap');
+
+$transition-time: 2.3s;
+
+body {
+  font-family: 'Oswald', sans-serif;
+  background-color: #212121;
+
+  section {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+    
+    .row {
+      align-items: center;
+      height: 100vh;
+    }
+  }
+}
+.card .cover{
+
+} &.test-a{
+  background-image: 'https://raw.githubusercontent.com/AlexJQuest/GhostlyCandlesCo/main/src/images/1000118736.jpg';
+}
+
 .card {
-  border: 1px solid #ddd; /* Light gray border */
-  border-radius: 8px; /* Rounded corners */
-  overflow: hidden; /* Hide overflow */
-  transition: transform 0.2s; /* Smooth scaling effect */
-  margin: 20px; /* Space between cards */
-  background-color: #fff; /* White background */
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow */
-}
+  position: relative;
+  height: 400px;
+  width: 400px;
+  margin: 10px 0;
+  transition: ease all ;
+  
+  perspective: 1200px;
 
-.card:hover {
-  transform: scale(1.05); /* Scale up on hover */
-}
+  &:hover {
+    .cover {
+      transform: rotateX(0deg) rotateY(-180deg);
 
-.cover {
-  position: relative; /* Positioning for child elements */
-}
+      &:before {
+        transform: translateZ(30px);
+      }
+      &:after {
+        background-color: black;
+      }
+      h1 {
+        transform: translateZ(100px);
+      }
+      .price {
+        transform: translateZ(60px);
+      }
+      a {
+        transform: translateZ(-60px) rotateY(-180deg);
+      }
+    }
+  }
 
-.product-image {
-  width: 100%; /* Full width */
-  height: auto; /* Maintain aspect ratio */
-  max-height: 200px; /* Limit height */
-  object-fit: cover; /* Cover the area */
-}
+  .cover {
+    position: absolute;
+    height: 400px;
+    width: 400px;
+    transform-style: preserve-3d;
+    transition: ease all $transition-time;
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+    
+    &.item-a{
+      background-image: "https://raw.githubusercontent.com/AlexJQuest/GhostlyCandlesCo/main/src/images/1000118736.jpg";
+    }
+    &:before {
+      content: '';
+      position: absolute;
+      border: 5px solid rgba(255, 255, 255, 0.5);
+      box-shadow: 0 0 12px rgba(0, 0, 0, 0.3);
+      top: 20px;
+      left: 20px;
+      right: 20px;
+      bottom: 20px;
+      z-index: 2;
+      transition: ease all $transition-time;
+      transform-style: preserve-3d;
+      transform: translateZ(0px);
+    }
 
-.card-back {
-  padding: 10px; /* Inner padding */
-  text-align: center; /* Center text */
-}
+    &:after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      z-index: 2;
+      transition: ease all 1.3s;
+      background: rgba(0, 0, 0, 0.4);
+    }
 
-h1 {
-  font-size: 1.2em; /* Font size for product name */
-  margin: 10px 0; /* Margin above and below */
-  color: #333; /* Dark gray text */
-}
+    h1 {
+      font-weight: 600;
+      position: absolute;
+      bottom: 55px;
+      left: 50px;
+      color: white;
+      transform-style: preserve-3d;
+      transition: ease all $transition-time;
+      z-index: 3;
+      font-size: 3em;
+      transform: translateZ(0px);
+    }
 
-.price {
-  font-size: 1.1em; /* Font size for price */
-  color: #007BFF; /* Blue color for price */
-  margin: 10px 0; /* Margin above and below */
-}
+    .price {
+      font-weight: 200;
+      position: absolute;
+      top: 55px;
+      right: 50px;
+      color: white;
+      transform-style: preserve-3d;
+      transition: ease all $transition-time;
+      z-index: 4;
+      font-size: 2em;
+      transform: translateZ(0px);
+    }
+  }
 
-button {
-  background-color: #28a745; /* Green background */
-  color: white; /* White text */
-  border: none; /* No border */
-  border-radius: 4px; /* Rounded corners */
-  padding: 10px 15px; /* Inner padding */
-  cursor: pointer; /* Pointer cursor */
-  transition: background-color 0.3s; /* Smooth color transition */
-}
+  .card-back {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    background: #0b0f08;
+    transform-style: preserve-3d;
+    transition: ease all $transition-time;
+    transform: translateZ(-1px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
 
-button:hover {
-  background-color: #218838; /* Darker green on hover */
+    .description {
+      color: white;
+      padding: 20px;
+    }
+
+    a {
+      transform-style: preserve-3d;
+      transition: ease transform $transition-time, ease background 0.5s;
+      transform: translateZ(-1px) rotateY(-180deg);
+      background: transparent;
+      border: 1px solid white;
+      font-weight: 200;
+      font-size: 1.3em;
+      color: white;
+      padding: 14px 32px;
+      outline: none;
+      text-decoration: none;
+
+      &:hover {
+        background-color: white;
+        color: #0b0f08;
+      }
+    }
+  }
 }

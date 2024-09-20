@@ -1,40 +1,40 @@
-import React from 'react';
+import React from 'react'; 
 import './ProductCard.css';
 
-const ProductCard = ({ id, image, name, price, addToCart }) => {
-  const itemClass = `cover item-${id}`;
-
-  // Function to convert Google Drive link to direct image link
-  const convertToDirectLink = (url) => {
-    const match = url.match(/\/d\/(.*?)(\/|$)/);
-    return match ? `https://drive.google.com/uc?export=view&id=${match[1]}` : url;
-  };
-
-  const directImageUrl = convertToDirectLink(image);
+const ProductCard = ({ id, image, name, price, description, addToCart }) => {
+  console.log("This is the link:", image); // Log the final image URL
 
   return (
-    <div className="card">
-      <div className={itemClass}>
-        <img
-          src={directImageUrl}
-          alt={name}
-          className="product-image"
-          onError={(e) => { e.target.src = 'https://drive.google.com/file/d/1Nql9ksSn4ocqfT-zI2v3XqH8-RW5yp0V/view?usp=drive_link'; }} // Fallback image
-        />
-        <h1>{name}</h1>
-        <div className="price">${price}</div>
-        <div className="card-back">
-          <button
-            onClick={() => addToCart({
-              Item_ID: id,
-              Item_Img: directImageUrl,
-              Item_Name: name,
-              Item_Price: parseFloat(price),
-            })}
-            aria-label={`Add ${name} to cart`}
-          >
-            Add to Cart
-          </button>
+    <div className="col-md-4 col-sm-6 col-xs-12">
+      <div className="card">
+        <div 
+          className='cover item-a' 
+          style={{ backgroundImage: `url(${image})` }} // Set the background image here
+        >
+          <h1>{name}</h1>
+          <span className="price">R{parseFloat(price).toFixed(2)}</span>
+          <div className="card-back">
+            <a href="ViewDetails" onClick={() => addToCart({
+                Item_ID: id,
+                Item_Img: image,
+                Item_Name: name,
+                Item_Price: parseFloat(price),
+                Item_Desc: description,
+              })
+            }>
+              View Details
+            </a>
+            <a href="#AddtoCart" onClick={() => addToCart({
+                Item_ID: id,
+                Item_Img: image,
+                Item_Name: name,
+                Item_Price: parseFloat(price),
+                Item_Desc: description,
+              })
+            }>
+              Add to Cart
+            </a>
+          </div>
         </div>
       </div>
     </div>
