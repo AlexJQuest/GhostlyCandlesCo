@@ -1,8 +1,10 @@
+// App.js
 import React, { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Route, Routes, Link } from 'react-router-dom';
 import './App.css';
 import CartPage from './components/CartPage';
 import ProductList from './components/ProductList';
+import Hero from './components/Hero.jsx';
 
 const App = () => {
   const [cart, setCart] = useState([]);
@@ -21,20 +23,28 @@ const App = () => {
     });
   };
 
+  const updateQuantity = (itemId, newQuantity) => {
+    setCart((prevCart) => 
+      prevCart.map(item =>
+        item.Item_ID === itemId ? { ...item, quantity: newQuantity } : item
+      ).filter(item => item.quantity > 0) // Remove items with quantity 0
+    );
+  };
+
+  const removeFromCart = (itemId) => {
+    setCart((prevCart) => prevCart.filter(item => item.Item_ID !== itemId));
+  };
+
   return (
     <Router>
       <div className='container'>
         <Header cart={cart} />
         <div className='BGwallpaper'>
           <Routes>
-            <Route 
-              path="/" 
-              element={<ProductList addToCart={addToCart} />} 
-            />
-            <Route 
-              path="/cart" 
-              element={<CartPage cart={cart} />} 
-            />
+          Hero
+          <Route path="/" element={<Hero addToCart={addToCart} />} />
+            <Route path="/Products" element={<ProductList addToCart={addToCart} />} />
+            <Route path="/cart" element={<CartPage cart={cart} updateQuantity={updateQuantity} removeFromCart={removeFromCart} />} />
           </Routes>
         </div>
         <Footer />
@@ -50,6 +60,7 @@ const Header = ({ cart }) => (
       <nav>
         <ul>
           <li><Link to="/">Home</Link></li>
+          <li><Link to="/Products">Products</Link></li>
           <li>
             <Link to="/cart">
               <button className="cart-button">

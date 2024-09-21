@@ -1,0 +1,60 @@
+/* Hero.css */
+.hero {
+    /*background-image: url('/path/to/your/spooky-background.jpg'); /* Replace with your spooky image */
+    background-size: cover;
+    background-position: center;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: white;
+    position: relative;
+  }
+  
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.6); /* Dark overlay for effect */
+  }
+  
+  .hero-content {
+    position: relative; /* Position context for the content */
+    z-index: 1; /* Ensure content is above the overlay */
+  }
+  
+  .hero-title {
+    font-size: 4rem; /* Large title */
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7); /* Shadow for depth */
+  }
+  
+  .hero-subtitle {
+    font-size: 1.5rem; /* Subtitle size */
+    margin: 20px 0; /* Margin for spacing */
+  }
+  
+  .hero-button {
+    background-color: #ffffff; /* Spooky red color */
+    color: rgb(0, 0, 0);
+    padding: 15px 30px;
+    border: none;
+    border-radius: 5px;
+    font-size: 1.2rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    color: black; /* Keep the color unchanged */
+  }
+
+  .hero-content .hero-button{
+        color: black;
+    
+}
+  .hero-button:hover {
+    background-color: #000000; /* Lighter red on hover */
+    color: #ffffff;
+  }
+  
