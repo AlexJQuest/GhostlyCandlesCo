@@ -4,7 +4,12 @@
   padding: 0;
   box-sizing: border-box;
 }
-
+.BGwallpaper {
+  display: flex;
+  background-image: url("https://github.com/AlexJQuest/GhostlyCandlesCo/blob/main/public/images/unnamed.png?raw=true");
+  background-size: cover; /* Optional: Adjusts the size of the background image */
+  background-position: center; /* Optional: Centers the background image */
+}
 body {
   font-family: Arial, sans-serif;
   background: #f4f4f4;

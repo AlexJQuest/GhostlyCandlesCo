@@ -1,24 +1,23 @@
-/* src/components/ProductList.css */
-
 .product-container {
-    display: flex;
-    flex-wrap: wrap;
-    background-image: "../../public/images/unnamed.png";
-    align-content: center;
-    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); /* Responsive grid */
-    gap: 20px; /* Space between the cards */
-    padding: 20px; /* Padding around the grid */
+  display: flex;
+  flex-wrap: wrap;
+
+  background-image: url("../../public/images/unnamed.png"); /* Use url(...) syntax */
+  background-size: cover; /* Ensure the image covers the entire area */
+  background-position: center; /* Center the background image */
+  align-content: space-between;
+  gap: 20px; /* Space between the cards */
+  padding: 20px; /* Padding around the grid */
+}
+
+.product-container p {
+  text-align: center; /* Center text for loading and error messages */
+  font-size: 1.2em;
+  color: #333;
+}
+
+@media (max-width: 600px) {
+  .product-container {
+    grid-template-columns: 1fr; /* Stack cards on smaller screens */
   }
-  
-  .product-container p {
-    text-align: center; /* Center text for loading and error messages */
-    font-size: 1.2em;
-    color: #333;
-  }
-  
-  @media (max-width: 600px) {
-    .product-container {
-      grid-template-columns: 1fr; /* Stack cards on smaller screens */
-    }
-  }
-  
+}

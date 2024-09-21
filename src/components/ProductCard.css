@@ -17,11 +17,7 @@ body {
     }
   }
 }
-.card .cover{
 
-} &.test-a{
-  background-image: 'https://raw.githubusercontent.com/AlexJQuest/GhostlyCandlesCo/main/src/images/1000118736.jpg';
-}
 
 .card {
   position: relative;

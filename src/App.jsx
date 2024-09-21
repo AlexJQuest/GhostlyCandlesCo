@@ -23,18 +23,20 @@ const App = () => {
 
   return (
     <Router>
-      <div>
+      <div className='container'>
         <Header cart={cart} />
-        <Routes>
-          <Route 
-            path="/" 
-            element={<ProductList addToCart={addToCart} />} 
-          />
-          <Route 
-            path="/cart" 
-            element={<CartPage cart={cart} />} 
-          />
-        </Routes>
+        <div className='BGwallpaper'>
+          <Routes>
+            <Route 
+              path="/" 
+              element={<ProductList addToCart={addToCart} />} 
+            />
+            <Route 
+              path="/cart" 
+              element={<CartPage cart={cart} />} 
+            />
+          </Routes>
+        </div>
         <Footer />
       </div>
     </Router>
