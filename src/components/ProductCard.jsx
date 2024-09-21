@@ -1,9 +1,9 @@
+// ProductCard.jsx
 import React from 'react'; 
 import './ProductCard.css';
+import { Link } from 'react-router-dom';
 
 const ProductCard = ({ id, image, name, price, description, addToCart }) => {
-  console.log("This is the link:", image); // Log the final image URL
-
   return (
     <div className="col-md-4 col-sm-6 col-xs-12">
       <div className="card">
@@ -14,16 +14,20 @@ const ProductCard = ({ id, image, name, price, description, addToCart }) => {
           <h1>{name}</h1>
           <span className="price">R{parseFloat(price).toFixed(2)}</span>
           <div className="card-back">
-            <a href="ViewDetails" onClick={() => addToCart({
+            <Link 
+              to="/ViewDetails" 
+              state={{ image, name, price, description }} // Pass product details as state
+              onClick={() => addToCart({
                 Item_ID: id,
                 Item_Img: image,
                 Item_Name: name,
                 Item_Price: parseFloat(price),
                 Item_Desc: description,
-              })
-            }>
-              View Details
-            </a>
+              })}
+            >
+              View Details 
+            </Link>
+
             <a href="#AddtoCart" onClick={() => addToCart({
                 Item_ID: id,
                 Item_Img: image,

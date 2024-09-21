@@ -1,22 +1,43 @@
 .product-container {
   display: flex;
-  flex-wrap: wrap;
-  background-image: url("../../public/images/unnamed.png"); /* Use url(...) syntax */
+  flex-wrap: wrap; /* Allow items to wrap on smaller screens */
+  justify-content: center; /* Center items horizontally */
+  align-items: center; /* Center items vertically */
+  background-image: url("../../public/images/unnamed.png");
   background-size: cover; /* Ensure the image covers the entire area */
-  background-position: center; /* Center the background image */
-  align-content: space-between;
-  gap: 20px; /* Space between the cards */
+  background-position: center;
+  min-height: 100vh; /* Ensure the container takes up the full height */
+  gap: 20px; /* Space between the product cards */
   padding: 20px; /* Padding around the grid */
 }
 
+/* Ensures loading/error messages are centered as well */
 .product-container p {
-  text-align: center; /* Center text for loading and error messages */
+  text-align: center;
   font-size: 1.2em;
   color: #333;
 }
 
+/* Responsive Styles */
+@media (max-width: 1024px) {
+  .product-container {
+    gap: 15px; /* Adjust gap for tablets */
+  }
+}
+
+@media (max-width: 768px) {
+  .product-container {
+    gap: 10px; /* Reduce the gap on smaller screens */
+  }
+}
+
 @media (max-width: 600px) {
   .product-container {
-    grid-template-columns: 1fr; /* Stack cards on smaller screens */
+    flex-direction: column; /* Stack cards vertically on smaller screens */
+    gap: 10px; /* Reduce the gap on smaller screens */
+  }
+
+  .product-container p {
+    font-size: 1em; /* Adjust font size for smaller screens */
   }
 }

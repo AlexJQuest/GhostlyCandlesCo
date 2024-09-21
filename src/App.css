@@ -4,18 +4,23 @@
   padding: 0;
   box-sizing: border-box;
 }
+
 .BGwallpaper {
   display: flex;
+  flex-wrap: wrap;
   background-image: url("https://github.com/AlexJQuest/GhostlyCandlesCo/blob/main/public/images/unnamed.png?raw=true");
-  background-size: cover; /* Optional: Adjusts the size of the background image */
-  background-position: center; /* Optional: Centers the background image */
+  background-size: cover;
+  background-position: center;
+  margin-bottom: 0;
 }
+
 body {
   font-family: Arial, sans-serif;
   background: #f4f4f4;
   color: #333;
 }
 
+/* Header Styles */
 header {
   background: #333;
   color: #fff;
@@ -35,6 +40,20 @@ header h1 {
   margin: 0;
 }
 
+.dropdown-button {
+  display: none; /* Hidden on desktop */
+  background: transparent;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  font-size: 1em;
+}
+
+/* Navigation styles */
+nav {
+  display: flex;
+}
+
 nav ul {
   list-style: none;
   display: flex;
@@ -51,7 +70,7 @@ nav ul li a {
 }
 
 .cart-button {
-  background:  #ffffff;
+  background: #ffffff;
   color: #000000;
   border: none;
   padding: 10px 20px;
@@ -65,66 +84,52 @@ nav ul li a {
   background: #e55;
 }
 
-main {
-  padding: 20px;
+/* Dropdown Menu for mobile */
+.nav {
+  display: none; /* Hide by default */
 }
 
-.product-container {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-  gap: 20px;
-  justify-content: center;
+.nav.open {
+  display: flex;
+  flex-direction: column; /* Stack items vertically */
+  position: absolute; /* Position it absolutely */
+  background: #444;
+  width: 100%; /* Full width */
+  z-index: 1000; /* Ensure it's above other content */
 }
 
-.product-card {
-  background: #fff;
-  border-radius: 12px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  overflow: hidden;
-  text-align: center;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.product-card:hover {
-  transform: translateY(-10px);
-  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-}
-
-.product-card img {
-  width: 100%;
-  height: 200px;
-  object-fit: cover;
-}
-
-.product-card h2 {
-  font-size: 1.4em;
-  margin: 10px 0;
-}
-
-.product-card p {
-  font-size: 1.2em;
-  color: #f60;
-}
-
-.product-card button {
-  background: #333;
-  color: #fff;
-  border: none;
-  padding: 10px 20px;
-  cursor: pointer;
-  border-radius: 5px;
-  font-size: 1em;
-  transition: background 0.3s ease;
-}
-
-.product-card button:hover {
-  background: #555;
-}
-
-footer {
-  background: #333;
-  color: #fff;
+.nav ul {
+  flex-direction: column; /* Stack vertically in dropdown */
   padding: 10px 0;
+}
+
+.nav ul li {
+  margin: 10px 0; /* Add margin for dropdown items */
+}
+
+/* Media Queries */
+@media (max-width: 1024px) {
+  .dropdown-button {
+    display: block; /* Show button on mobile */
+  }
+
+  nav {
+    display: none; /* Hide desktop nav */
+  }
+
+  .nav.open {
+    display: flex; /* Show dropdown when open */
+  }
+}
+
+/* Footer Styles */
+footer {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  background: #333;
+  color: #fff;
+  padding: 10px;
   text-align: center;
 }
 
@@ -132,26 +137,4 @@ footer .container {
   width: 90%;
   max-width: 1200px;
   margin: 0 auto;
-}
-
-/* Responsive Styles */
-@media (max-width: 768px) {
-  header .container {
-    flex-direction: column;
-    align-items: flex-start;
-  }
-
-  nav ul {
-    margin-top: 10px;
-    flex-direction: column;
-  }
-
-  nav ul li {
-    margin-left: 0;
-    margin-bottom: 10px;
-  }
-
-  .product-card {
-    border-radius: 8px;
-  }
 }

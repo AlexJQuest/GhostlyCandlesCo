@@ -10,7 +10,7 @@ body {
     width: 90%;
     max-width: 1200px;
     margin: 0 auto;
-    
+
     .row {
       align-items: center;
       height: 100vh;
@@ -18,14 +18,14 @@ body {
   }
 }
 
-
 .card {
+  display: flex;
+  flex-direction: column;
   position: relative;
   height: 500px;
   width: 500px;
   margin: 10px 0;
-  transition: ease all ;
-  
+  transition: ease all;
   perspective: 1200px;
 
   &:hover {
@@ -59,10 +59,11 @@ body {
     background-size: cover;
     background-position: center center;
     background-repeat: no-repeat;
-    
-    &.item-a{
-      background-image: "https://raw.githubusercontent.com/AlexJQuest/GhostlyCandlesCo/main/src/images/1000118736.jpg";
+
+    &.item-a {
+      background-image: url("https://raw.githubusercontent.com/AlexJQuest/GhostlyCandlesCo/main/src/images/1000118736.jpg");
     }
+
     &:before {
       content: '';
       position: absolute;
@@ -99,7 +100,7 @@ body {
       transform-style: preserve-3d;
       transition: ease all $transition-time;
       z-index: 3;
-      font-size: 3em;
+      font-size: 2.5em;
       transform: translateZ(0px);
     }
 
@@ -151,6 +152,57 @@ body {
         background-color: white;
         color: #0b0f08;
       }
+    }
+  }
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+  .card {
+    height: 400px;
+    width: 350px; /* Adjusted width for better fit on smaller screens */
+
+    .cover,
+    .card-back {
+      height: 400px;
+      width: 350px; /* Match dimensions */
+    }
+
+    h1 {
+      font-size: 1.5em;
+    }
+
+    .price {
+      font-size: 0.5em;
+    }
+
+    .card-back a {
+      font-size: 0.2em;
+    }
+  }
+}
+
+@media (max-width: 480px) {
+  .card {
+    height: 300px; /* Further decrease height */
+    width: 250px;  /* Further decrease width */
+
+    .cover,
+    .card-back {
+      height: 300px; /* Match dimensions */
+      width: 250px;  
+    }
+
+    h1 {
+      font-size: 0.8em;
+    }
+
+    .price {
+      font-size: 0.2em;
+    }
+
+    .card-back a {
+      font-size: 1em;
     }
   }
 }

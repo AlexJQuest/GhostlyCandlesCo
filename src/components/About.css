@@ -1,4 +1,4 @@
-.hero {
+.about {
   background-size: cover;
   background-position: center;
   height: 100vh;
@@ -7,14 +7,13 @@
   justify-content: space-between;
   align-items: center;
   text-align: center;
-  text-wrap: wrap;
   color: rgb(0, 0, 0);
   position: relative;
   padding: 0 50px;
   flex-wrap: wrap; /* Allow wrapping for smaller screens */
 }
 
-.hero::before {
+.about::before {
   content: '';
   position: absolute;
   top: 0;
@@ -24,7 +23,7 @@
   background-color: rgba(0, 0, 0, 0.6);
 }
 
-.hero-content {
+.about-content {
   position: relative;
   z-index: 1;
   padding: 40px;
@@ -36,18 +35,23 @@
   margin: 0 auto;
 }
 
-.hero-title {
+.about-title {
   font-size: 4rem;
   text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7);
   margin-bottom: 20px;
 }
 
-.hero-subtitle {
+.about-subtitle {
+  font-size: 2rem;
+  margin: 20px 0;
+}
+
+.about-text {
   font-size: 1.5rem;
   margin: 20px 0;
 }
 
-.hero-button {
+.about-button {
   background-color: #ffffff;
   color: rgb(0, 0, 0);
   padding: 15px 30px;
@@ -58,12 +62,12 @@
   transition: background-color 0.3s ease;
 }
 
-.hero-button:hover {
+.about-button:hover {
   background-color: #000000;
   color: #ffffff;
 }
 
-.hero-image {
+.about-image {
   position: relative;
   max-width: 45%;
   height: auto;
@@ -72,7 +76,7 @@
   margin-right: auto;
 }
 
-.hero-image img {
+.about-image img {
   width: 100%;
   height: auto;
   border-radius: 10px;
@@ -80,49 +84,46 @@
 }
 
 /* Responsive Adjustments */
-
-/* For tablets and smaller devices */
 @media (max-width: 1024px) {
-  .hero {
+  .about {
       flex-direction: column; /* Stack content vertically */
       padding: 20px;
   }
 
-  .hero-content {
+  .about-content {
       max-width: 100%; /* Full width on smaller screens */
       margin-bottom: 20px;
   }
 
-  .hero-image {
+  .about-image {
       max-width: 100%; /* Full width image on smaller screens */
       margin-top: 20px;
   }
 
-  .hero-title {
+  .about-title {
       font-size: 3rem; /* Adjust title size */
   }
 
-  .hero-subtitle {
-      font-size: 1.2rem; /* Adjust subtitle size */
+  .about-text {
+      font-size: 1.2rem; /* Adjust text size */
   }
 
-  .hero-button {
+  .about-button {
       font-size: 1rem;
       padding: 10px 20px;
   }
 }
 
-/* For mobile devices */
 @media (max-width: 768px) {
-  .hero-title {
+  .about-title {
       font-size: 2.5rem; /* Further reduce title size for mobile */
   }
 
-  .hero-subtitle {
+  .about-text {
       font-size: 1rem;
   }
 
-  .hero-button {
+  .about-button {
       font-size: 0.9rem;
       padding: 8px 16px;
   }

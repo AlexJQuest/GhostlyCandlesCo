@@ -1,0 +1,94 @@
+.product-details {
+    display: flex;
+    flex-direction: column;
+    padding: 40px;
+    background-color: rgba(255, 255, 255, 0.1); /* Slightly transparent white */
+    border: 3px solid white; /* White border for consistency */
+    border-radius: 10px; /* Rounded corners */
+    width: 80%; /* Limit width */
+    margin: 20px auto; /* Center on the page */
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5); /* Enhanced shadow for depth */
+    position: relative; /* For overlay effect */
+}
+
+.product-details::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.3); /* Dark overlay */
+    border-radius: 10px; /* Match border radius */
+    z-index: 0; /* Behind content */
+}
+
+header {
+    text-align: center;
+    z-index: 1; /* Ensure it's above the overlay */
+    position: relative; /* For positioning */
+}
+
+.details-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.image-section {
+    max-width: 400px; /* Adjust size as necessary */
+    margin-bottom: 20px;
+}
+
+.product-image {
+    width: 100%;
+    height: auto;
+    border-radius: 10px; /* Rounded corners */
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5); /* Stronger shadow for depth */
+}
+
+.info-section {
+    text-align: center;
+    z-index: 1; /* Ensure it's above the overlay */
+    position: relative; /* For positioning */
+}
+
+.product-title {
+    font-size: 3rem; /* Larger title */
+    margin-bottom: 10px;
+    color: white; /* Title color */
+}
+
+.product-description {
+    font-size: 1.5rem; /* Adjust description size */
+    margin-bottom: 15px;
+    color: white; /* Description color */
+}
+
+.product-price {
+    font-size: 2rem; /* Larger price size */
+    color: #f60; /* Gold color for price */
+    margin-bottom: 20px;
+}
+
+.buy-button {
+    background-color: #0070ba; /* Primary button color */
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 15px 30px; /* More padding for button */
+    font-size: 1.5em; /* Larger font size */
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.buy-button:hover {
+    background-color: #000000; /* Darker shade on hover */
+}
+
+footer {
+    text-align: center;
+    font-size: 0.9em;
+    color: white; /* Footer text color */
+}
